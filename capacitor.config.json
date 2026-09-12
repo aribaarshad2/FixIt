@@ -1,0 +1,14 @@
+{
+  "appId": "com.fixit.app",
+  "appName": "FixIt",
+  "webDir": "frontend/build",
+  "server": {
+    "androidScheme": "https",
+    "url": "https://fixit-production-f41e.up.railway.app",
+    "cleartext": false,
+    "allowNavigation": ["*"]
+  },
+  "android": {
+    "allowMixedContent": false
+  }
+}
