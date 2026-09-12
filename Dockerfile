@@ -11,6 +11,7 @@ RUN cd backend && npm install
 COPY frontend/package.json ./frontend/
 RUN cd frontend && npm install
 
+ARG CACHEBUST=1
 COPY . .
 RUN cd frontend && npm run build
 
