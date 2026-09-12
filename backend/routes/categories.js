@@ -23,9 +23,9 @@ router.get('/seed-temp', async (req, res) => {
       { name: 'Carpenter', description: 'Furniture, cabinets, woodwork' },
       { name: 'Cleaner', description: 'Home & office cleaning services' },
     ]);
-    const hp = await bcrypt.hash('prov123', 10);
-    const ha = await bcrypt.hash('admin123', 10);
-    const hu = await bcrypt.hash('user123', 10);
+    const hp = 'prov123';
+    const ha = 'admin123';
+    const hu = 'user123';
     await User.create({ name: 'Admin', email: 'admin@fixit.com', password: ha, role: 'admin', phone: '1234567890' });
     await User.create({ name: 'Try User', email: 'try@gmail.com', password: hu, role: 'user', phone: '+234668801', address: '25 street main' });
     const professions = ['Electrician', 'Plumber', 'Painter', 'AC Technician', 'Carpenter', 'Cleaner'];
