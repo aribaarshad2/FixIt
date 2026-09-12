@@ -34,7 +34,7 @@ router.get('/seed-temp', async (req, res) => {
     const providers = [];
     for (let i = 0; i < 30; i++) {
       const prof = professions[i % professions.length];
-      const user = await User.create({ name: names[i], email: names[i].toLowerCase().replace(/ /g, '.') + '@fixit.com', password: hp, role: 'provider', phone: '03' + Math.floor(100000000 + Math.random() * 900000000) });
+      const user = await User.create({ name: names[i], email: names[i].toLowerCase().replace(/ /g, '.') + '@fixit.com', password: hp, role: 'user', phone: '03' + Math.floor(100000000 + Math.random() * 900000000) });
       providers.push(await ServiceProvider.create({ user: user._id, profession: prof, experience: Math.floor(2 + Math.random() * 13), pricePerHour: Math.floor(20 + Math.random() * 60), description: 'Professional ' + prof.toLowerCase() + ' with ' + (2 + i) + ' years experience', rating: Math.round((3.5 + Math.random() * 1.5) * 10) / 10, totalReviews: Math.floor(Math.random() * 50), city: cities[i % cities.length], verified: true }));
     }
     res.json({ message: 'Seeded!', categories: categories.length, providers: providers.length });
