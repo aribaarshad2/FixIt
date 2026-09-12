@@ -5,8 +5,8 @@
   "private": true,
   "scripts": {
     "start": "node backend/server.js",
-    "build": "npm --prefix frontend install && npm --prefix frontend run build",
-    "postinstall": "npm --prefix backend install"
+    "build": "node build.js",
+    "postinstall": "node build.js"
   },
   "engines": {
     "node": ">=18.0.0"
