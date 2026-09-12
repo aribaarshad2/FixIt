@@ -4,7 +4,7 @@
   "webDir": "frontend/build",
   "server": {
     "androidScheme": "https",
-    "url": "https://fixit-production-f41e.up.railway.app",
+    "url": "https://fixit-production-c57b.up.railway.app",
     "cleartext": false,
     "allowNavigation": ["*"]
   },
