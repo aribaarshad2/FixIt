@@ -12,6 +12,7 @@ COPY frontend/package.json ./frontend/
 RUN cd frontend && npm install
 
 COPY . .
+RUN echo "rebuild-1694520000" > /tmp/rebuild-marker
 RUN cd frontend && npm run build
 
 EXPOSE 5000
