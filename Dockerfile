@@ -1,25 +1,19 @@
-FROM node:20-slim
+FROM node:18-alpine
 
 WORKDIR /app
 
-# Install frontend deps and build
-COPY frontend/package.json frontend/package-lock.json /app/frontend/
-RUN cd frontend && npm install
+COPY package.json ./
+RUN npm install
 
-COPY frontend/ /app/frontend/
-RUN cd frontend && npm run build
-
-# Install backend deps
-COPY backend/package.json backend/package-lock.json /app/backend/
+COPY backend/package.json ./backend/
 RUN cd backend && npm install
 
-COPY backend/ /app/backend/
+COPY frontend/package.json ./frontend/
+RUN cd frontend && npm install
 
-# HF Spaces default port
-ENV PORT=7860
-ENV NODE_ENV=production
+COPY . .
+RUN cd frontend && npm run build
 
-EXPOSE 7860
+EXPOSE 5000
 
-WORKDIR /app/backend
-CMD ["node", "server.js"]
+CMD ["node", "backend/server.js"]
