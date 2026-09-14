@@ -599,7 +599,7 @@ textarea.form-modern { resize: vertical; }
    ============================================ */
 .auth-card {
   border: 1px solid var(--glass-border);
-  border-radius: var(--radius-xl);
+  border-radius: var(--radius-md);
   overflow: hidden;
   background: var(--glass-bg);
   backdrop-filter: blur(20px) saturate(180%);
@@ -616,7 +616,7 @@ textarea.form-modern { resize: vertical; }
 .auth-card:hover {
   box-shadow: 0 25px 70px rgba(0,0,0,0.2), 0 0 0 1px var(--glass-border);
 }
-.auth-card .card-body { padding: 2.5rem; }
+.auth-card .card-body { padding: 2rem; }
 .auth-header {
   padding: 2.5rem 2rem;
   text-align: center;
