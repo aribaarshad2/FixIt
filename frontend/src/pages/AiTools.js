@@ -40,19 +40,18 @@ export default function AiTools() {
 
   return (
     <div className="animate-fade-in">
-      <div className="d-flex align-items-center mb-4">
-        <div className="p-3 rounded-3 me-3" style={{ background: 'var(--primary-light)' }}>
-          <i className="bi bi-magic fs-4" style={{ color: 'var(--primary)' }}></i>
+      <div className="auth-card mb-4">
+        <div className="auth-header d-flex align-items-center gap-3" style={{textAlign: 'left'}}>
+          <div style={{position: 'relative', zIndex: 1}}>
+            <i className="bi bi-stars" style={{fontSize: '2rem'}}></i>
+          </div>
+          <div style={{position: 'relative', zIndex: 1}}>
+            <h3 className="fw-bold mb-0">AI Service Assistant</h3>
+            <p className="mb-0 opacity-75 small">Describe your job — get a smart price estimate and matched providers</p>
+          </div>
         </div>
-        <div>
-          <h2 className="fw-bold mb-1">AI Service Assistant</h2>
-          <p className="text-muted mb-0">Describe your job — get a smart price estimate and matched providers</p>
-        </div>
-      </div>
-
-      <div className="card-modern mb-4">
-        <div className="card-body">
-          <label className="fw-semibold mb-2 d-block">
+        <div className="card-body p-4">
+          <label className="form-label fw-semibold mb-2">
             <i className="bi bi-chat-left-text me-1" style={{ color: 'var(--primary)' }}></i>Describe the job you need
           </label>
           <textarea
@@ -83,8 +82,8 @@ export default function AiTools() {
       {estimate && (
         <div className="row g-4 mb-4">
           <div className="col-md-4 animate-fade-in-up">
-            <div className="card-modern h-100">
-              <div className="card-body">
+            <div className="auth-card h-100">
+              <div className="card-body p-4">
                 <h6 className="fw-bold mb-3"><i className="bi bi-cash-coin me-2" style={{ color: 'var(--primary)' }}></i>Smart Price Estimate</h6>
                 <div className="mb-3">
                   <small className="text-muted d-block mb-1">Service Type</small>
@@ -111,8 +110,8 @@ export default function AiTools() {
             </div>
           </div>
           <div className="col-md-8 animate-fade-in-up" style={{ animationDelay: '0.1s' }}>
-            <div className="card-modern h-100">
-              <div className="card-body">
+            <div className="auth-card h-100">
+              <div className="card-body p-4">
                 <h6 className="fw-bold mb-3"><i className="bi bi-person-check me-2" style={{ color: 'var(--primary)' }}></i>Smart Provider Matches</h6>
                 {matches?.length === 0 ? (
                   <p className="text-muted mb-0">No providers available.</p>
@@ -120,7 +119,7 @@ export default function AiTools() {
                   <div className="row g-3">
                     {matches?.map((m, i) => (
                       <div className="col-md-6" key={m.provider._id}>
-                        <div className="border rounded-3 p-3 h-100" style={{ borderColor: i === 0 ? 'var(--primary)' : 'var(--border)' }}>
+                        <div className="p-3 h-100 rounded-3" style={{ background: i === 0 ? 'rgba(var(--primary-rgb), 0.08)' : 'var(--surface-2)', border: `1px solid ${i === 0 ? 'var(--primary)' : 'var(--border)'}` }}>
                           <div className="d-flex justify-content-between align-items-start mb-2">
                             <div>
                               <div className="fw-bold">{m.provider.name}</div>
@@ -138,7 +137,7 @@ export default function AiTools() {
                             <div className="progress-bar" style={{ width: `${m.matchScore}%`, background: m.matchScore >= 70 ? '#22c55e' : m.matchScore >= 50 ? '#f59e0b' : '#ef4444' }}></div>
                           </div>
                           <small className="text-muted d-block mb-2">{m.matchReason}</small>
-                          <Link to={`/provider/${m.provider._id}`} className="btn btn-sm btn-modern btn-modern-secondary w-100">
+                          <Link to={`/provider/${m.provider._id}`} className="btn btn-sm btn-modern btn-modern-primary w-100">
                             View Profile
                           </Link>
                         </div>

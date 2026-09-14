@@ -66,23 +66,23 @@ export default function ProviderDetail() {
             <span className="badge bg-white bg-opacity-25 text-white">{provider.profession}</span>
           </div>
           <div className="card-body p-4">
-            <div className="d-flex justify-content-between p-2 bg-light rounded-3 mb-2">
+            <div className="d-flex justify-content-between p-2 rounded-3 mb-2" style={{ background: 'var(--surface-2)' }}>
               <span>Rating</span>
               <span className="fw-bold"><i className="bi bi-star-fill text-warning me-1"></i>{provider.rating || 'N/A'}</span>
             </div>
-            <div className="d-flex justify-content-between p-2 bg-light rounded-3 mb-2">
+            <div className="d-flex justify-content-between p-2 rounded-3 mb-2" style={{ background: 'var(--surface-2)' }}>
               <span>Experience</span>
               <span className="fw-bold">{provider.experience} years</span>
             </div>
-            <div className="d-flex justify-content-between p-2 bg-light rounded-3 mb-2">
+            <div className="d-flex justify-content-between p-2 rounded-3 mb-2" style={{ background: 'var(--surface-2)' }}>
               <span>Rate</span>
               <span className="fw-bold" style={{ color: 'var(--primary)' }}>${provider.pricePerHour}/hr</span>
             </div>
-            <div className="d-flex justify-content-between p-2 bg-light rounded-3 mb-2">
+            <div className="d-flex justify-content-between p-2 rounded-3 mb-2" style={{ background: 'var(--surface-2)' }}>
               <span>Reviews</span>
               <span className="fw-bold">{provider.totalReviews || 0}</span>
             </div>
-            <div className="d-flex justify-content-between p-2 bg-light rounded-3 mb-3">
+            <div className="d-flex justify-content-between p-2 rounded-3 mb-3" style={{ background: 'var(--surface-2)' }}>
               <span>Status</span>
               {provider.isAvailable ? (
                 <span className="badge badge-modern-success">Available</span>
@@ -108,8 +108,8 @@ export default function ProviderDetail() {
         </div>
       </div>
       <div className="col-md-8">
-        <div className="card-modern mb-4">
-          <div className="card-body">
+        <div className="auth-card mb-4">
+          <div className="card-body p-4">
             <h5 className="fw-bold mb-3"><i className="bi bi-stars me-2" style={{ color: 'var(--primary)' }}></i>AI Summary</h5>
             {summaryLoading ? (
               <div className="d-flex align-items-center gap-2 text-muted small">
@@ -117,16 +117,16 @@ export default function ProviderDetail() {
                 Analyzing reviews...
               </div>
             ) : summary ? (
-              <p className="mb-0" style={{ background: 'var(--surface)', padding: '14px 16px', borderRadius: 12 }}>{summary}</p>
+              <p className="mb-0" style={{ background: 'var(--surface-2)', padding: '14px 16px', borderRadius: 12 }}>{summary}</p>
             ) : null}
           </div>
         </div>
-        <div className="card-modern mb-4">
-          <div className="card-body">
+        <div className="auth-card mb-4">
+          <div className="card-body p-4">
             <h5 className="fw-bold mb-3"><i className="bi bi-star me-2" style={{ color: 'var(--primary)' }}></i>Reviews ({reviews.length})</h5>
 
             {sentiment && (
-              <div className="d-flex align-items-center gap-3 flex-wrap mb-4 p-3 rounded-3" style={{ background: 'var(--surface)' }}>
+              <div className="d-flex align-items-center gap-3 flex-wrap mb-4 p-3 rounded-3" style={{ background: 'var(--surface-2)' }}>
                 <div className="text-center">
                   <div className={`sentiment-dot ${sentiment.overall}`}></div>
                   <small className="text-muted d-block mt-1">AI Sentiment</small>

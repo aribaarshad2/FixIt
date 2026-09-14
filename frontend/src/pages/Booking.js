@@ -56,17 +56,22 @@ export default function Booking() {
 
   return (
     <div className="row justify-content-center mt-4 animate-fade-in-up">
-      <div className="col-md-6">
+      <div className="col-lg-6">
         <div className="auth-card">
-          <div className="auth-header">
-            <i className="bi bi-calendar-check display-5"></i>
-            <h3 className="mt-2 fw-bold">Book a Service</h3>
-            <p className="mb-0 opacity-75">Schedule your appointment</p>
+          <div className="auth-header d-flex align-items-center gap-3" style={{textAlign: 'left'}}>
+            <div style={{position: 'relative', zIndex: 1}}>
+              <i className="bi bi-calendar-check" style={{fontSize: '2rem'}}></i>
+            </div>
+            <div style={{position: 'relative', zIndex: 1}}>
+              <h3 className="fw-bold mb-0">Book a Service</h3>
+              <p className="mb-0 opacity-75 small">Schedule your appointment</p>
+            </div>
           </div>
-          <div className="card-body">
+          <div className="card-body p-4">
             {error && <div className="alert alert-modern alert-modern-danger d-flex align-items-center"><i className="bi bi-exclamation-circle me-2"></i>{error}</div>}
-            <div className="card-modern p-3 mb-4 d-flex align-items-center">
-              <div className="provider-avatar me-3">{provider.name.charAt(0)}</div>
+
+            <div className="d-flex align-items-center gap-3 p-3 mb-4 rounded-3" style={{ background: 'var(--surface-2)', border: '1px solid var(--border)' }}>
+              <div className="provider-avatar">{provider.name.charAt(0)}</div>
               <div className="flex-grow-1">
                 <h6 className="fw-bold mb-0">{provider.name}</h6>
                 <small className="text-muted">{provider.profession} · ${provider.pricePerHour}/hr</small>
@@ -76,6 +81,7 @@ export default function Booking() {
                 <small className="text-muted">total</small>
               </div>
             </div>
+
             <form onSubmit={handleSubmit}>
               <div className="row">
                 <div className="col-md-6 mb-3">
@@ -99,7 +105,7 @@ export default function Booking() {
                 </div>
                 {slotLoading && <div className="text-muted small"><div className="loading-spinner" style={{ width: 16, height: 16, borderWidth: 2, display: 'inline-block', marginRight: 6 }}></div>Finding available slots...</div>}
                 {aiSlots && (
-                  <div className="p-3 rounded-3" style={{ background: 'var(--surface)' }}>
+                  <div className="p-3 rounded-3" style={{ background: 'var(--surface-2)', border: '1px solid var(--border)' }}>
                     {aiSlots.slots.length === 0 ? (
                       <div className="text-muted small mb-0">
                         <i className="bi bi-exclamation-circle me-1"></i>{aiSlots.recommendation}
@@ -136,8 +142,8 @@ export default function Booking() {
                 <input type="number" className="form-control form-modern" min="0.5" step="0.5"
                   value={form.hours} onChange={e => setForm({ ...form, hours: Number(e.target.value) })} required />
               </div>
-              <div className="p-3 rounded-3 mb-3 text-white text-center bg-primary">
-                <h4 className="fw-bold mb-0">Total: ${(provider.pricePerHour * form.hours).toFixed(2)}</h4>
+              <div className="p-3 rounded-3 mb-3 text-center" style={{ background: 'rgba(var(--primary-rgb), 0.15)', border: '1px solid var(--primary)' }}>
+                <h4 className="fw-bold mb-0" style={{ color: 'var(--primary)' }}>Total: ${(provider.pricePerHour * form.hours).toFixed(2)}</h4>
               </div>
               <button type="submit" className="btn btn-modern btn-modern-primary w-100 py-2">
                 <i className="bi bi-arrow-right me-1"></i>Proceed to Payment

@@ -39,10 +39,14 @@ export default function Review() {
     <div className="row justify-content-center animate-fade-in">
       <div className="col-md-5">
         <div className="auth-card">
-          <div className="auth-header">
-            <i className="bi bi-star display-5"></i>
-            <h3 className="mt-2 fw-bold">{done ? 'Thank You!' : 'Write a Review'}</h3>
-            <p className="mb-0 opacity-75">{done ? 'Your feedback helps others' : 'Share your experience'}</p>
+          <div className="auth-header d-flex align-items-center gap-3" style={{textAlign: 'left'}}>
+            <div style={{position: 'relative', zIndex: 1}}>
+              <i className="bi bi-star" style={{fontSize: '2rem'}}></i>
+            </div>
+            <div style={{position: 'relative', zIndex: 1}}>
+              <h3 className="fw-bold mb-0">{done ? 'Thank You!' : 'Write a Review'}</h3>
+              <p className="mb-0 opacity-75 small">{done ? 'Your feedback helps others' : 'Share your experience'}</p>
+            </div>
           </div>
           <div className="card-body p-4">
             {error && <div className="alert alert-modern alert-modern-danger"><i className="bi bi-exclamation-circle me-2"></i>{error}</div>}
@@ -57,8 +61,8 @@ export default function Review() {
             ) : (
               <form onSubmit={handleSubmit}>
                 {booking && (
-                  <div className="card-modern p-3 mb-3 d-flex align-items-center">
-                    <div className="provider-avatar me-3">{booking.provider?.name?.charAt(0)}</div>
+                  <div className="d-flex align-items-center gap-3 p-3 mb-3 rounded-3" style={{ background: 'var(--surface-2)', border: '1px solid var(--border)' }}>
+                    <div className="provider-avatar">{booking.provider?.name?.charAt(0)}</div>
                     <div>
                       <div className="fw-semibold">{booking.provider?.name}</div>
                       <small className="text-muted">{new Date(booking.date).toLocaleDateString()}</small>

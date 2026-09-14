@@ -41,19 +41,23 @@ export default function Payment() {
     <div className="row justify-content-center mt-4 animate-fade-in-up">
       <div className="col-md-5">
         <div className="auth-card">
-          <div className="auth-header">
-            <i className="bi bi-credit-card display-5"></i>
-            <h3 className="mt-2 fw-bold">Complete Payment</h3>
-            <p className="mb-0 opacity-75">Secure checkout</p>
+          <div className="auth-header d-flex align-items-center gap-3" style={{textAlign: 'left'}}>
+            <div style={{position: 'relative', zIndex: 1}}>
+              <i className="bi bi-credit-card" style={{fontSize: '2rem'}}></i>
+            </div>
+            <div style={{position: 'relative', zIndex: 1}}>
+              <h3 className="fw-bold mb-0">Complete Payment</h3>
+              <p className="mb-0 opacity-75 small">Secure checkout</p>
+            </div>
           </div>
-          <div className="card-body">
+          <div className="card-body p-4">
             {message && (
               <div className={`alert alert-modern d-flex align-items-center ${message.includes('successful') ? 'alert-modern-success' : 'alert-modern-danger'}`}>
                 <i className={`bi ${message.includes('successful') ? 'bi-check-circle' : 'bi-exclamation-circle'} me-2`}></i>
                 {message}
               </div>
             )}
-            <div className="card-modern p-3 mb-4">
+            <div className="p-3 mb-4 rounded-3" style={{ background: 'var(--surface-2)', border: '1px solid var(--border)' }}>
               <div className="d-flex justify-content-between mb-2">
                 <span className="text-muted">Service</span>
                 <span className="fw-semibold">{booking.service?.name || 'Home Service'}</span>

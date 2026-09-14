@@ -46,7 +46,7 @@ export default function Invoice() {
   return (
     <div className="row justify-content-center animate-fade-in">
       <div className="col-md-7" id="invoice-content">
-        <div className="card-modern p-4 mb-4">
+        <div className="auth-card p-4 mb-4">
           <div className="d-flex justify-content-between align-items-center mb-4 no-print">
             <div>
               <h3 className="fw-bold mb-1">
@@ -90,7 +90,7 @@ export default function Invoice() {
             </div>
           </div>
 
-          <div className="card-modern p-3 mb-3">
+          <div className="p-3 mb-3 rounded-3" style={{ background: 'var(--surface-2)', border: '1px solid var(--border)' }}>
             <div className="row">
               <div className="col-6 mb-2">
                 <small className="text-muted d-block">Provider</small>
@@ -129,7 +129,7 @@ export default function Invoice() {
             </div>
           </div>
 
-          <div className="d-flex justify-content-between p-2 bg-light rounded-3">
+          <div className="d-flex justify-content-between p-2 rounded-3" style={{ background: 'var(--surface-2)' }}>
             <span className="text-muted">Payment</span>
             <span className="fw-semibold">
               {getPaymentDisplay()}
