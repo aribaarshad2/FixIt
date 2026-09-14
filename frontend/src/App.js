@@ -30,7 +30,7 @@ function MobileRedirect({ children }) {
   const { user, loading } = useAuth();
   const location = useLocation();
   const navigate = useNavigate();
-  const isNativeApp = window.location.protocol === 'capacitor:' || window.location.hostname === 'localhost';
+  const isNativeApp = (window.Capacitor && window.Capacitor.isNativePlatform) || navigator.userAgent.includes('Capacitor');
 
   useEffect(() => {
     if (isNativeApp && !loading && !user && location.pathname !== '/login' && location.pathname !== '/register') {
