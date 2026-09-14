@@ -17,7 +17,7 @@ export default function Navbar() {
     <nav className="navbar navbar-expand-lg navbar-modern sticky-top">
       <div className="container">
         <Link className="navbar-brand d-flex align-items-center" to="/">
-          <i className="bi bi-tools me-2 fs-4"></i>
+          <img src="/logo.png" alt="FixIt" height="32" className="me-2" style={{objectFit:'contain'}} />
           <span>FixIt</span>
         </Link>
 

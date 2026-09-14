@@ -36,7 +36,7 @@ export default function Login() {
               <div style={{ position: 'absolute', bottom: '15%', right: '15%', width: 50, height: 50, borderRadius: '50%', background: 'rgba(255,255,255,0.08)', animation: 'heroFloat 8s ease-in-out infinite reverse' }}></div>
               <div className="d-flex flex-column justify-content-center align-items-center p-5 text-white position-relative" style={{ zIndex: 1 }}>
                 <div style={{ width: 90, height: 90, borderRadius: '50%', background: 'rgba(255,255,255,0.15)', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '1.5rem', backdropFilter: 'blur(8px)', border: '2px solid rgba(255,255,255,0.2)', boxShadow: '0 8px 32px rgba(0,0,0,0.2)' }}>
-                  <i className="bi bi-tools" style={{ fontSize: '2.5rem' }}></i>
+                  <img src="/logo.png" alt="FixIt" style={{ width: 50, height: 50, objectFit: 'contain' }} />
                 </div>
                 <h3 className="fw-bold mb-2 text-center">Welcome Back</h3>
                 <p className="text-center opacity-75 mb-4" style={{ maxWidth: 260, lineHeight: 1.6 }}>Sign in to access your dashboard and manage your services</p>
@@ -61,7 +61,7 @@ export default function Login() {
             <div className="col-lg-7">
               <div className="card-body p-4 p-lg-5">
                 <div className="text-center mb-4 d-lg-none">
-                  <i className="bi bi-tools display-4 gradient-text"></i>
+                  <img src="/logo.png" alt="FixIt" height="48" style={{objectFit:'contain'}} />
                 </div>
                 <h3 className="fw-bold mb-1">Sign In</h3>
                 <p className="text-muted mb-4">Enter your credentials to continue</p>

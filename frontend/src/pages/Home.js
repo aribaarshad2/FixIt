@@ -109,9 +109,7 @@ export default function Home() {
           </div>
           <div className="col-lg-5 text-center p-4 d-none d-lg-block animate-slide-right delay-3">
             <div style={{ position: 'relative', display: 'inline-block' }}>
-              <div className="display-1" style={{ opacity: 0.9, filter: 'drop-shadow(0 8px 24px rgba(0,0,0,0.3))' }}>
-                <i className="bi bi-tools"></i>
-              </div>
+              <img src="/logo.png" alt="FixIt" style={{ width: 120, height: 120, objectFit: 'contain', opacity: 0.9, filter: 'drop-shadow(0 8px 24px rgba(0,0,0,0.3))' }} />
               <div style={{ position: 'absolute', top: -10, right: -10, width: 60, height: 60, borderRadius: '50%', background: 'rgba(251,191,36,0.9)', display: 'flex', alignItems: 'center', justifyContent: 'center', boxShadow: '0 4px 20px rgba(251,191,36,0.4)', animation: 'bounce 2s ease-in-out infinite' }}>
                 <i className="bi bi-check-lg fs-4 text-dark"></i>
               </div>
