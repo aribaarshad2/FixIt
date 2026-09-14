@@ -3,14 +3,14 @@ import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 
 export default function SessionExpiredModal({ show }) {
-  const { logout } = useAuth();
+  const { clearSession } = useAuth();
   const navigate = useNavigate();
 
   if (!show) return null;
 
   const handleLogin = () => {
-    logout();
-    navigate('/login');
+    clearSession();
+    navigate('/login', { replace: true });
   };
 
   return (
