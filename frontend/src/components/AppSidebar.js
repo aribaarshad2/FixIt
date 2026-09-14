@@ -1,13 +1,15 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
+import axios from 'axios';
+import API from '../config';
 
 const menus = {
   user: [
     { label: 'Home', icon: 'bi-house', path: '/' },
     { label: 'Services', icon: 'bi-grid', path: '/services' },
     { label: 'AI Assistant', icon: 'bi-stars', path: '/ai-tools' },
-    { label: 'My Bookings', icon: 'bi-calendar-check', path: '/my-bookings', badge: 3 },
+    { label: 'My Bookings', icon: 'bi-calendar-check', path: '/my-bookings', badgeKey: 'bookings' },
     { label: 'Favorites', icon: 'bi-heart', path: '/favorites' },
     { label: 'Profile', icon: 'bi-person', path: '/profile' },
   ],
@@ -36,10 +38,21 @@ export default function AppSidebar() {
   const navigate = useNavigate();
   const [collapsed, setCollapsed] = useState(false);
   const [userExpanded, setUserExpanded] = useState(false);
+  const [bookingCount, setBookingCount] = useState(0);
+
+  useEffect(() => {
+    if (user?.role === 'user') {
+      axios.get(`${API}/bookings/my`).then(res => {
+        const pending = res.data.filter(b => b.status === 'pending' || b.status === 'confirmed').length;
+        setBookingCount(pending);
+      }).catch(() => {});
+    }
+  }, [user]);
 
   if (!user) return null;
 
   const items = menus[user.role] || [];
+  const badges = { bookings: bookingCount };
 
   return (
     <div className={`app-sidebar ${collapsed ? 'sidebar-collapsed' : ''}`} style={{
@@ -107,11 +120,11 @@ export default function AppSidebar() {
               }}></div>}
               <i className={`bi ${item.icon}`} style={{ fontSize: '1.05rem', width: 20, textAlign: 'center', flexShrink: 0, color: isActive ? '#26c6c9' : 'inherit' }}></i>
               {!collapsed && <span style={{ flex: 1, textAlign: 'left' }}>{item.label}</span>}
-              {!collapsed && item.badge && (
+              {!collapsed && item.badgeKey && badges[item.badgeKey] > 0 && (
                 <span style={{
                   background: '#26c6c9', color: 'white', fontSize: '0.7rem', fontWeight: 700,
                   padding: '2px 8px', borderRadius: 10, minWidth: 22, textAlign: 'center',
-                }}>{item.badge}</span>
+                }}>{badges[item.badgeKey]}</span>
               )}
             </button>
           );

@@ -38,7 +38,7 @@ export default function Profile() {
   if (!user) return null;
 
   return (
-    <div className="animate-fade-in" style={{ maxWidth: 950, margin: '0 auto' }}>
+    <div className="animate-fade-in flex-grow-1" style={{ maxWidth: 950, margin: '0 auto', width: '100%' }}>
       <div className="row g-4 align-items-stretch">
         {/* Left Card - Profile Info */}
         <div className="col-md-4">
