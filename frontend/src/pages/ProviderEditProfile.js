@@ -56,26 +56,44 @@ export default function ProviderEditProfile() {
 
   return (
     <div className="row justify-content-center animate-fade-in">
-      <div className="col-md-6">
+      <div className="col-lg-8">
         <div className="auth-card">
-          <div className="auth-header">
-            <i className="bi bi-pencil-square display-5"></i>
-            <h3 className="mt-2 fw-bold">Edit Profile</h3>
-            <p className="mb-0 opacity-75">Update your professional information</p>
+          <div className="auth-header d-flex align-items-center gap-3" style={{textAlign: 'left'}}>
+            <div style={{position: 'relative', zIndex: 1}}>
+              <i className="bi bi-person-gear" style={{fontSize: '2rem'}}></i>
+            </div>
+            <div style={{position: 'relative', zIndex: 1}}>
+              <h3 className="fw-bold mb-0">Edit Profile</h3>
+              <p className="mb-0 opacity-75 small">Keep your information up to date</p>
+            </div>
           </div>
           <div className="card-body p-4">
             {saved && <div className="alert alert-modern alert-modern-success"><i className="bi bi-check-circle me-2"></i>Profile updated successfully!</div>}
             {error && <div className="alert alert-modern alert-modern-danger"><i className="bi bi-exclamation-circle me-2"></i>{error}</div>}
             <form onSubmit={handleSubmit}>
-              <div className="mb-3">
-                <label className="form-label fw-semibold">Full Name</label>
-                <input name="name" className="form-control form-modern" value={form.name}
-                  onChange={handleChange} required />
+              <div className="row">
+                <div className="col-md-6 mb-3">
+                  <label className="form-label fw-semibold">Full Name</label>
+                  <input name="name" className="form-control form-modern" value={form.name}
+                    onChange={handleChange} required />
+                </div>
+                <div className="col-md-6 mb-3">
+                  <label className="form-label fw-semibold">Experience (years)</label>
+                  <input name="experience" type="number" className="form-control form-modern" value={form.experience}
+                    onChange={handleChange} />
+                </div>
               </div>
-              <div className="mb-3">
-                <label className="form-label fw-semibold">Phone</label>
-                <input name="phone" className="form-control form-modern" value={form.phone}
-                  onChange={handleChange} required />
+              <div className="row">
+                <div className="col-md-6 mb-3">
+                  <label className="form-label fw-semibold">Phone</label>
+                  <input name="phone" className="form-control form-modern" value={form.phone}
+                    onChange={handleChange} required />
+                </div>
+                <div className="col-md-6 mb-3">
+                  <label className="form-label fw-semibold">Price per Hour ($)</label>
+                  <input name="pricePerHour" type="number" className="form-control form-modern" value={form.pricePerHour}
+                    onChange={handleChange} required />
+                </div>
               </div>
               <div className="mb-3">
                 <label className="form-label fw-semibold">Profession</label>
@@ -89,26 +107,20 @@ export default function ProviderEditProfile() {
                   <option>Cleaner</option>
                 </select>
               </div>
-              <div className="row">
-                <div className="col-md-6 mb-3">
-                  <label className="form-label fw-semibold">Experience (years)</label>
-                  <input name="experience" type="number" className="form-control form-modern" value={form.experience}
-                    onChange={handleChange} />
-                </div>
-                <div className="col-md-6 mb-3">
-                  <label className="form-label fw-semibold">Price per Hour ($)</label>
-                  <input name="pricePerHour" type="number" className="form-control form-modern" value={form.pricePerHour}
-                    onChange={handleChange} required />
-                </div>
-              </div>
               <div className="mb-4">
                 <label className="form-label fw-semibold">Description</label>
                 <textarea name="description" className="form-control form-modern" rows="3" value={form.description}
                   onChange={handleChange} placeholder="Describe your expertise..."></textarea>
               </div>
-              <button type="submit" className="btn btn-modern btn-modern-primary w-100 py-2" disabled={!hasChanges}>
-                <i className="bi bi-check-lg me-1"></i>Save Changes
-              </button>
+              <div className="d-flex gap-3">
+                <button type="button" className="btn btn-modern flex-fill py-2" style={{background: 'var(--surface-2)', color: 'var(--text-secondary)', border: '1px solid var(--border)'}}
+                  onClick={() => navigate(-1)}>
+                  Cancel
+                </button>
+                <button type="submit" className="btn btn-modern btn-modern-primary flex-fill py-2" disabled={!hasChanges}>
+                  <i className="bi bi-check-lg me-1"></i>Save Changes
+                </button>
+              </div>
               {!hasChanges && <p className="text-center text-muted small mt-2">No changes to save</p>}
             </form>
           </div>
