@@ -18,15 +18,13 @@ public class SplashActivity extends AppCompatActivity {
 
         ImageView logo = findViewById(R.id.splash_logo);
 
-        // Scale up + fade in animation
-        Animation scaleUp = AnimationUtils.loadAnimation(this, R.anim.splash_zoom_in);
-        logo.startAnimation(scaleUp);
+        Animation zoomIn = AnimationUtils.loadAnimation(this, R.anim.splash_zoom_in);
+        logo.startAnimation(zoomIn);
 
-        // Navigate to main app after 2 seconds
         new Handler(Looper.getMainLooper()).postDelayed(() -> {
             startActivity(new Intent(SplashActivity.this, MainActivity.class));
             overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
             finish();
-        }, 2000);
+        }, 2200);
     }
 }
