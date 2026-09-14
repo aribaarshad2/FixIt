@@ -71,11 +71,10 @@ export default function Home() {
       {/* HERO */}
       <div className="hero-section mb-5 text-white animate-fade-in overflow-hidden">
         {/* Floating decorative shapes */}
-        <div className="hero-shape" style={{ width: 80, height: 80, background: 'rgba(124,58,237,0.3)', top: '15%', left: '8%', animationDuration: '6s' }}></div>
-        <div className="hero-shape" style={{ width: 50, height: 50, background: 'rgba(6,182,212,0.3)', top: '60%', left: '5%', animationDuration: '8s', animationDelay: '1s' }}></div>
-        <div className="hero-shape" style={{ width: 35, height: 35, background: 'rgba(251,191,36,0.25)', bottom: '20%', right: '25%', animationDuration: '7s', animationDelay: '2s' }}></div>
-        <div className="hero-shape" style={{ width: 60, height: 60, background: 'rgba(16,185,129,0.2)', top: '25%', right: '10%', animationDuration: '9s' }}></div>
-        <div className="hero-shape" style={{ width: 25, height: 25, background: 'rgba(244,63,94,0.25)', bottom: '30%', left: '15%', animationDuration: '5s', animationDelay: '0.5s' }}></div>
+        <div className="hero-shape" style={{ width: 60, height: 60, background: 'rgba(124,58,237,0.25)', top: '15%', left: '8%', animationDuration: '6s' }}></div>
+        <div className="hero-shape" style={{ width: 40, height: 40, background: 'rgba(6,182,212,0.25)', top: '65%', left: '5%', animationDuration: '8s', animationDelay: '1s' }}></div>
+        <div className="hero-shape" style={{ width: 30, height: 30, background: 'rgba(251,191,36,0.2)', bottom: '25%', left: '20%', animationDuration: '7s', animationDelay: '2s' }}></div>
+        <div className="hero-shape" style={{ width: 25, height: 25, background: 'rgba(244,63,94,0.2)', bottom: '35%', left: '12%', animationDuration: '5s', animationDelay: '0.5s' }}></div>
 
         <div className="row align-items-center position-relative" style={{ zIndex: 1 }}>
           <div className="col-lg-7 p-4 p-lg-5">
@@ -107,13 +106,13 @@ export default function Home() {
               <small style={{ color: 'rgba(255,255,255,0.75)' }}><i className="bi bi-people me-1"></i>{stats.totalProviders || 0}+ pros</small>
             </div>
           </div>
-          <div className="col-lg-5 text-center p-4 d-none d-lg-block animate-slide-right delay-3">
+          <div className="col-lg-5 text-center p-4 d-none d-lg-block" style={{ position: 'relative', zIndex: 2 }}>
             <div style={{ position: 'relative', display: 'inline-block' }}>
-              <img src="/logo.png" alt="FixIt" style={{ width: 120, height: 120, objectFit: 'contain', opacity: 0.9, filter: 'drop-shadow(0 8px 24px rgba(0,0,0,0.3))' }} />
-              <div style={{ position: 'absolute', top: -10, right: -10, width: 60, height: 60, borderRadius: '50%', background: 'rgba(251,191,36,0.9)', display: 'flex', alignItems: 'center', justifyContent: 'center', boxShadow: '0 4px 20px rgba(251,191,36,0.4)', animation: 'bounce 2s ease-in-out infinite' }}>
+              <img src="/logo.png" alt="FixIt" style={{ width: 260, height: 260, objectFit: 'contain', filter: 'drop-shadow(0 12px 40px rgba(0,0,0,0.4))', animation: 'heroLogoFloat 4s ease-in-out infinite' }} />
+              <div style={{ position: 'absolute', top: 10, right: -10, width: 56, height: 56, borderRadius: '50%', background: 'rgba(251,191,36,0.95)', display: 'flex', alignItems: 'center', justifyContent: 'center', boxShadow: '0 4px 20px rgba(251,191,36,0.5)', animation: 'bounce 2s ease-in-out infinite' }}>
                 <i className="bi bi-check-lg fs-4 text-dark"></i>
               </div>
-              <div style={{ position: 'absolute', bottom: 0, left: 20, width: 50, height: 50, borderRadius: '50%', background: 'rgba(16,185,129,0.9)', display: 'flex', alignItems: 'center', justifyContent: 'center', boxShadow: '0 4px 20px rgba(16,185,129,0.4)', animation: 'bounce 2s ease-in-out 0.5s infinite' }}>
+              <div style={{ position: 'absolute', bottom: 20, left: 0, width: 48, height: 48, borderRadius: '50%', background: 'rgba(16,185,129,0.95)', display: 'flex', alignItems: 'center', justifyContent: 'center', boxShadow: '0 4px 20px rgba(16,185,129,0.5)', animation: 'bounce 2s ease-in-out 0.5s infinite' }}>
                 <i className="bi bi-star-fill fs-5 text-white"></i>
               </div>
             </div>
