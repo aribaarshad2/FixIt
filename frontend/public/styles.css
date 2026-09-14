@@ -1036,7 +1036,7 @@ a:hover { color: var(--primary-dark); }
 /* ============================================
    APP SIDEBAR
    ============================================ */
-.app-layout { display: flex; gap: 1.5rem; min-height: calc(100vh - 88px); }
+.app-layout { display: flex; gap: 1.5rem; min-height: 100vh; }
 .app-sidebar {
   width: 250px; flex-shrink: 0;
   background: var(--surface);
@@ -1045,7 +1045,7 @@ a:hover { color: var(--primary-dark); }
   padding: 0;
   box-shadow: var(--shadow-md);
   align-self: flex-start;
-  position: sticky; top: 88px;
+  position: sticky; top: 0;
   overflow: hidden;
   transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
@@ -1116,7 +1116,7 @@ a:hover { color: var(--primary-dark); }
   padding: 0.75rem 0;
   box-shadow: var(--shadow-md);
   align-self: flex-start;
-  position: sticky; top: 88px;
+  position: sticky; top: 0;
 }
 [data-theme="dark"] .admin-sidebar {
   background: linear-gradient(180deg, var(--surface) 0%, #0d2535 100%);
