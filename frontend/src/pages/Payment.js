@@ -31,30 +31,33 @@ export default function Payment() {
     }
   };
 
-  if (!booking) return (
-    <div className="text-center mt-5">
-      <div className="loading-spinner mx-auto"></div>
-    </div>
-  );
+  if (!booking) return <div className="text-center mt-5"><div className="loading-spinner mx-auto"></div></div>;
 
   return (
     <div className="row justify-content-center mt-4 animate-fade-in-up">
       <div className="col-md-5">
-        <div className="auth-card">
-          <div className="auth-header d-flex align-items-center gap-3" style={{textAlign: 'left'}}>
-            <div style={{position: 'relative', zIndex: 1}}>
-              <i className="bi bi-credit-card" style={{fontSize: '2rem'}}></i>
+        <div className="card-modern" style={{ borderRadius: 'var(--radius-md)', overflow: 'hidden' }}>
+          <div style={{
+            background: 'linear-gradient(135deg, #132234 0%, rgba(38,198,201,0.2) 50%, #0d2a3a 100%)',
+            padding: '1.5rem 1.75rem', borderBottom: '1px solid var(--border)',
+            display: 'flex', alignItems: 'center', gap: '0.75rem',
+          }}>
+            <div style={{
+              width: 42, height: 42, borderRadius: 10,
+              background: 'linear-gradient(135deg, #26c6c9, #1a9fa2)',
+              display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0,
+            }}>
+              <i className="bi bi-credit-card text-white"></i>
             </div>
-            <div style={{position: 'relative', zIndex: 1}}>
-              <h3 className="fw-bold mb-0">Complete Payment</h3>
-              <p className="mb-0 opacity-75 small">Secure checkout</p>
+            <div>
+              <h4 className="fw-bold mb-0">Complete Payment</h4>
+              <small style={{ color: 'var(--text-secondary)' }}>Secure checkout</small>
             </div>
           </div>
           <div className="card-body p-4">
             {message && (
               <div className={`alert alert-modern d-flex align-items-center ${message.includes('successful') ? 'alert-modern-success' : 'alert-modern-danger'}`}>
-                <i className={`bi ${message.includes('successful') ? 'bi-check-circle' : 'bi-exclamation-circle'} me-2`}></i>
-                {message}
+                <i className={`bi ${message.includes('successful') ? 'bi-check-circle' : 'bi-exclamation-circle'} me-2`}></i>{message}
               </div>
             )}
             <div className="p-3 mb-4 rounded-3" style={{ background: 'var(--surface-2)', border: '1px solid var(--border)' }}>
@@ -78,13 +81,13 @@ export default function Payment() {
             <div className="mb-4">
               <label className="form-label fw-semibold">Payment Method</label>
               <select className="form-select form-modern" value={method} onChange={e => setMethod(e.target.value)}>
-                <option value="card"><i className="bi bi-credit-card"></i> Credit / Debit Card</option>
+                <option value="card">Credit / Debit Card</option>
                 <option value="online">Online Payment</option>
                 <option value="cash">Cash on Service</option>
               </select>
             </div>
             {method === 'card' && (
-              <div className="rounded-3 p-4 mb-4 text-center" style={{ background: 'var(--primary-light)' }}>
+              <div className="rounded-3 p-4 mb-4 text-center" style={{ background: 'var(--surface-2)', border: '1px solid var(--border)' }}>
                 <i className="bi bi-credit-card-2-front fs-1" style={{ color: 'var(--primary)' }}></i>
                 <p className="mt-2 text-muted small mb-0">Secure payment simulation</p>
                 <div className="d-flex gap-2 justify-content-center mt-2">

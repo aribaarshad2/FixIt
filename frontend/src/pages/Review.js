@@ -38,14 +38,22 @@ export default function Review() {
   return (
     <div className="row justify-content-center animate-fade-in">
       <div className="col-md-5">
-        <div className="auth-card">
-          <div className="auth-header d-flex align-items-center gap-3" style={{textAlign: 'left'}}>
-            <div style={{position: 'relative', zIndex: 1}}>
-              <i className="bi bi-star" style={{fontSize: '2rem'}}></i>
+        <div className="card-modern" style={{ borderRadius: 'var(--radius-md)', overflow: 'hidden' }}>
+          <div style={{
+            background: 'linear-gradient(135deg, #132234 0%, rgba(38,198,201,0.2) 50%, #0d2a3a 100%)',
+            padding: '1.5rem 1.75rem', borderBottom: '1px solid var(--border)',
+            display: 'flex', alignItems: 'center', gap: '0.75rem',
+          }}>
+            <div style={{
+              width: 42, height: 42, borderRadius: 10,
+              background: 'linear-gradient(135deg, #26c6c9, #1a9fa2)',
+              display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0,
+            }}>
+              <i className="bi bi-star text-white"></i>
             </div>
-            <div style={{position: 'relative', zIndex: 1}}>
-              <h3 className="fw-bold mb-0">{done ? 'Thank You!' : 'Write a Review'}</h3>
-              <p className="mb-0 opacity-75 small">{done ? 'Your feedback helps others' : 'Share your experience'}</p>
+            <div>
+              <h4 className="fw-bold mb-0">{done ? 'Thank You!' : 'Write a Review'}</h4>
+              <small style={{ color: 'var(--text-secondary)' }}>{done ? 'Your feedback helps others' : 'Share your experience'}</small>
             </div>
           </div>
           <div className="card-body p-4">
@@ -54,9 +62,7 @@ export default function Review() {
               <div className="text-center py-3">
                 <div style={{ fontSize: 48 }} className="mb-2">⭐</div>
                 <p className="text-muted mb-3">Your review has been submitted.</p>
-                <button className="btn btn-modern btn-modern-primary" onClick={() => navigate('/my-bookings')}>
-                  Back to Bookings
-                </button>
+                <button className="btn btn-modern btn-modern-primary" onClick={() => navigate('/my-bookings')}>Back to Bookings</button>
               </div>
             ) : (
               <form onSubmit={handleSubmit}>
@@ -73,26 +79,20 @@ export default function Review() {
                   <label className="form-label fw-semibold d-block">Rating</label>
                   <div className="d-flex justify-content-center gap-1" style={{ fontSize: 32 }}>
                     {[1,2,3,4,5].map(s => (
-                      <i key={s} className={`bi ${s <= rating ? 'bi-star-fill' : 'bi-star'} cursor-pointer`}
+                      <i key={s} className={`bi ${s <= rating ? 'bi-star-fill' : 'bi-star'}`}
                         style={{ color: s <= rating ? '#fbbf24' : 'var(--border)', cursor: 'pointer', transition: 'transform 0.2s' }}
                         onClick={() => setRating(s)}
                         onMouseEnter={e => e.target.style.transform = 'scale(1.2)'}
-                        onMouseLeave={e => e.target.style.transform = 'scale(1)'}>
-                      </i>
+                        onMouseLeave={e => e.target.style.transform = 'scale(1)'}></i>
                     ))}
                   </div>
                 </div>
                 <div className="mb-4">
                   <label className="form-label fw-semibold">Comment (optional)</label>
-                  <textarea className="form-control form-modern" rows="3" placeholder="Describe your experience..."
-                    value={comment} onChange={e => setComment(e.target.value)}></textarea>
+                  <textarea className="form-control form-modern" rows="3" placeholder="Describe your experience..." value={comment} onChange={e => setComment(e.target.value)}></textarea>
                 </div>
                 <button type="submit" className="btn btn-modern btn-modern-primary w-100 py-2" disabled={submitting}>
-                  {submitting ? (
-                    <><span className="spinner-border spinner-border-sm me-1"></span>Submitting...</>
-                  ) : (
-                    <><i className="bi bi-send me-1"></i>Submit Review</>
-                  )}
+                  {submitting ? (<><span className="spinner-border spinner-border-sm me-1"></span>Submitting...</>) : (<><i className="bi bi-send me-1"></i>Submit Review</>)}
                 </button>
               </form>
             )}

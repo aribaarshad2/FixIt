@@ -55,46 +55,68 @@ export default function ProviderDetail() {
   if (!provider) return <div className="empty-state"><h5>Provider not found</h5></div>;
 
   return (
-    <div className="row g-4 animate-fade-in">
+    <div className="row g-4 animate-fade-in align-items-stretch">
       <div className="col-md-4">
-        <div className="auth-card">
-          <div className="auth-header">
-            <div style={{ width: 80, height: 80, borderRadius: 20, background: 'rgba(255,255,255,0.2)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 36, margin: '0 auto 12px' }}>
+        <div className="card-modern h-100" style={{ borderRadius: 'var(--radius-md)', overflow: 'hidden' }}>
+          {/* Profile Header */}
+          <div style={{
+            background: 'linear-gradient(160deg, #0d2a3a 0%, rgba(38,198,201,0.3) 60%, #0f3545 100%)',
+            padding: '2rem 1.5rem 1.5rem', textAlign: 'center',
+            position: 'relative', overflow: 'hidden',
+          }}>
+            <svg style={{ position: 'absolute', top: -15, right: -15, width: 110, height: 110, opacity: 0.12 }} viewBox="0 0 200 200">
+              <path d="M20,180 Q80,40 180,20 Q120,100 180,180 Z" fill="white"/>
+            </svg>
+            <div style={{
+              width: 80, height: 80, borderRadius: '50%',
+              background: 'rgba(255,255,255,0.15)', border: '3px solid rgba(255,255,255,0.4)',
+              display: 'flex', alignItems: 'center', justifyContent: 'center',
+              fontSize: '2rem', fontWeight: 700, color: 'white',
+              margin: '0 auto 12px', position: 'relative', zIndex: 1,
+            }}>
               {provider.name?.charAt(0)}
             </div>
-            <h4 className="fw-bold mb-1">{provider.name}</h4>
-            <span className="badge bg-white bg-opacity-25 text-white">{provider.profession}</span>
+            <h4 className="fw-bold mb-1 text-white" style={{ position: 'relative', zIndex: 1 }}>{provider.name}</h4>
+            <span style={{
+              display: 'inline-block', background: 'white', color: '#008080',
+              padding: '3px 14px', borderRadius: 20, fontSize: '0.78rem', fontWeight: 600,
+              position: 'relative', zIndex: 1,
+            }}>{provider.profession}</span>
           </div>
-          <div className="card-body p-4">
-            <div className="d-flex justify-content-between p-2 rounded-3 mb-2" style={{ background: 'var(--surface-2)' }}>
-              <span>Rating</span>
-              <span className="fw-bold"><i className="bi bi-star-fill text-warning me-1"></i>{provider.rating || 'N/A'}</span>
-            </div>
-            <div className="d-flex justify-content-between p-2 rounded-3 mb-2" style={{ background: 'var(--surface-2)' }}>
-              <span>Experience</span>
-              <span className="fw-bold">{provider.experience} years</span>
-            </div>
-            <div className="d-flex justify-content-between p-2 rounded-3 mb-2" style={{ background: 'var(--surface-2)' }}>
-              <span>Rate</span>
-              <span className="fw-bold" style={{ color: 'var(--primary)' }}>${provider.pricePerHour}/hr</span>
-            </div>
-            <div className="d-flex justify-content-between p-2 rounded-3 mb-2" style={{ background: 'var(--surface-2)' }}>
-              <span>Reviews</span>
-              <span className="fw-bold">{provider.totalReviews || 0}</span>
-            </div>
-            <div className="d-flex justify-content-between p-2 rounded-3 mb-3" style={{ background: 'var(--surface-2)' }}>
-              <span>Status</span>
-              {provider.isAvailable ? (
-                <span className="badge badge-modern-success">Available</span>
-              ) : (
-                <span className="badge badge-modern-warning">Busy</span>
+
+          {/* Stats */}
+          <div className="card-body p-4" style={{ flex: 1, display: 'flex', flexDirection: 'column' }}>
+            <div style={{ flex: 1 }}>
+              <div className="d-flex justify-content-between p-2 rounded-3 mb-2" style={{ background: 'var(--surface-2)' }}>
+                <span>Rating</span>
+                <span className="fw-bold"><i className="bi bi-star-fill text-warning me-1"></i>{provider.rating || 'N/A'}</span>
+              </div>
+              <div className="d-flex justify-content-between p-2 rounded-3 mb-2" style={{ background: 'var(--surface-2)' }}>
+                <span>Experience</span>
+                <span className="fw-bold">{provider.experience} years</span>
+              </div>
+              <div className="d-flex justify-content-between p-2 rounded-3 mb-2" style={{ background: 'var(--surface-2)' }}>
+                <span>Rate</span>
+                <span className="fw-bold" style={{ color: 'var(--primary)' }}>${provider.pricePerHour}/hr</span>
+              </div>
+              <div className="d-flex justify-content-between p-2 rounded-3 mb-2" style={{ background: 'var(--surface-2)' }}>
+                <span>Reviews</span>
+                <span className="fw-bold">{provider.totalReviews || 0}</span>
+              </div>
+              <div className="d-flex justify-content-between p-2 rounded-3 mb-3" style={{ background: 'var(--surface-2)' }}>
+                <span>Status</span>
+                {provider.isAvailable ? (
+                  <span className="badge badge-modern-success">Available</span>
+                ) : (
+                  <span className="badge badge-modern-warning">Busy</span>
+                )}
+              </div>
+              {provider.description && (
+                <p className="text-muted small mb-3">{provider.description}</p>
               )}
             </div>
-            {provider.description && (
-              <p className="text-muted small mb-3">{provider.description}</p>
-            )}
             {user && user.role === 'user' && (
-              <div className="d-flex gap-2">
+              <div className="d-flex gap-2 mt-auto">
                 <Link to={`/book/${provider._id}`} className="btn btn-modern btn-modern-primary flex-grow-1">
                   <i className="bi bi-calendar-plus me-1"></i>Book Now
                 </Link>
@@ -108,9 +130,17 @@ export default function ProviderDetail() {
         </div>
       </div>
       <div className="col-md-8">
-        <div className="auth-card mb-4">
+        <div className="card-modern mb-4" style={{ borderRadius: 'var(--radius-md)', overflow: 'hidden' }}>
+          {/* AI Summary Header */}
+          <div style={{
+            background: 'linear-gradient(135deg, #132234 0%, rgba(38,198,201,0.15) 50%, #0d2a3a 100%)',
+            padding: '1.2rem 1.5rem', borderBottom: '1px solid var(--border)',
+            display: 'flex', alignItems: 'center', gap: '0.6rem',
+          }}>
+            <i className="bi bi-stars" style={{ color: 'var(--primary)', fontSize: '1.1rem' }}></i>
+            <h6 className="fw-bold mb-0">AI Summary</h6>
+          </div>
           <div className="card-body p-4">
-            <h5 className="fw-bold mb-3"><i className="bi bi-stars me-2" style={{ color: 'var(--primary)' }}></i>AI Summary</h5>
             {summaryLoading ? (
               <div className="d-flex align-items-center gap-2 text-muted small">
                 <div className="loading-spinner" style={{ width: 18, height: 18, borderWidth: 2 }}></div>
@@ -121,10 +151,17 @@ export default function ProviderDetail() {
             ) : null}
           </div>
         </div>
-        <div className="auth-card mb-4">
+        <div className="card-modern mb-4" style={{ borderRadius: 'var(--radius-md)', overflow: 'hidden' }}>
+          {/* Reviews Header */}
+          <div style={{
+            background: 'linear-gradient(135deg, #132234 0%, rgba(38,198,201,0.15) 50%, #0d2a3a 100%)',
+            padding: '1.2rem 1.5rem', borderBottom: '1px solid var(--border)',
+            display: 'flex', alignItems: 'center', gap: '0.6rem',
+          }}>
+            <i className="bi bi-star" style={{ color: 'var(--primary)', fontSize: '1.1rem' }}></i>
+            <h6 className="fw-bold mb-0">Reviews ({reviews.length})</h6>
+          </div>
           <div className="card-body p-4">
-            <h5 className="fw-bold mb-3"><i className="bi bi-star me-2" style={{ color: 'var(--primary)' }}></i>Reviews ({reviews.length})</h5>
-
             {sentiment && (
               <div className="d-flex align-items-center gap-3 flex-wrap mb-4 p-3 rounded-3" style={{ background: 'var(--surface-2)' }}>
                 <div className="text-center">
@@ -151,7 +188,7 @@ export default function ProviderDetail() {
               </div>
             ) : (
               reviews.map(r => (
-                <div key={r._id} className="border-bottom pb-3 mb-3">
+                <div key={r._id} className="border-bottom pb-3 mb-3" style={{ borderColor: 'var(--border)' }}>
                   <div className="d-flex justify-content-between">
                     <div className="fw-semibold">{r.user?.name || 'Anonymous'}</div>
                     <div>{[1,2,3,4,5].map(s => <i key={s} className={`bi ${s <= r.rating ? 'bi-star-fill text-warning' : 'bi-star text-muted'} me-1`}></i>)}</div>

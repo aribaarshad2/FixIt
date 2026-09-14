@@ -57,14 +57,22 @@ export default function ProviderEditProfile() {
   return (
     <div className="row justify-content-center animate-fade-in">
       <div className="col-lg-8">
-        <div className="auth-card">
-          <div className="auth-header d-flex align-items-center gap-3" style={{textAlign: 'left'}}>
-            <div style={{position: 'relative', zIndex: 1}}>
-              <i className="bi bi-person-gear" style={{fontSize: '2rem'}}></i>
+        <div className="card-modern" style={{ borderRadius: 'var(--radius-md)', overflow: 'hidden' }}>
+          <div style={{
+            background: 'linear-gradient(135deg, #132234 0%, rgba(38,198,201,0.2) 50%, #0d2a3a 100%)',
+            padding: '1.5rem 1.75rem', borderBottom: '1px solid var(--border)',
+            display: 'flex', alignItems: 'center', gap: '0.75rem',
+          }}>
+            <div style={{
+              width: 42, height: 42, borderRadius: 10,
+              background: 'linear-gradient(135deg, #26c6c9, #1a9fa2)',
+              display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0,
+            }}>
+              <i className="bi bi-person-gear text-white"></i>
             </div>
-            <div style={{position: 'relative', zIndex: 1}}>
-              <h3 className="fw-bold mb-0">Edit Profile</h3>
-              <p className="mb-0 opacity-75 small">Keep your information up to date</p>
+            <div>
+              <h4 className="fw-bold mb-0">Edit Profile</h4>
+              <small style={{ color: 'var(--text-secondary)' }}>Keep your information up to date</small>
             </div>
           </div>
           <div className="card-body p-4">

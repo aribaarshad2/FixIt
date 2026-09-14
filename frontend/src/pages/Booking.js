@@ -48,28 +48,32 @@ export default function Booking() {
     }
   };
 
-  if (!provider) return (
-    <div className="text-center mt-5">
-      <div className="loading-spinner mx-auto"></div>
-    </div>
-  );
+  if (!provider) return <div className="text-center mt-5"><div className="loading-spinner mx-auto"></div></div>;
 
   return (
     <div className="row justify-content-center mt-4 animate-fade-in-up">
       <div className="col-lg-6">
-        <div className="auth-card">
-          <div className="auth-header d-flex align-items-center gap-3" style={{textAlign: 'left'}}>
-            <div style={{position: 'relative', zIndex: 1}}>
-              <i className="bi bi-calendar-check" style={{fontSize: '2rem'}}></i>
+        <div className="card-modern" style={{ borderRadius: 'var(--radius-md)', overflow: 'hidden' }}>
+          <div style={{
+            background: 'linear-gradient(135deg, #132234 0%, rgba(38,198,201,0.2) 50%, #0d2a3a 100%)',
+            padding: '1.5rem 1.75rem', borderBottom: '1px solid var(--border)',
+            display: 'flex', alignItems: 'center', gap: '0.75rem',
+          }}>
+            <div style={{
+              width: 42, height: 42, borderRadius: 10,
+              background: 'linear-gradient(135deg, #26c6c9, #1a9fa2)',
+              display: 'flex', alignItems: 'center', justifyContent: 'center',
+              flexShrink: 0,
+            }}>
+              <i className="bi bi-calendar-check text-white"></i>
             </div>
-            <div style={{position: 'relative', zIndex: 1}}>
-              <h3 className="fw-bold mb-0">Book a Service</h3>
-              <p className="mb-0 opacity-75 small">Schedule your appointment</p>
+            <div>
+              <h4 className="fw-bold mb-0">Book a Service</h4>
+              <small style={{ color: 'var(--text-secondary)' }}>Schedule your appointment</small>
             </div>
           </div>
           <div className="card-body p-4">
             {error && <div className="alert alert-modern alert-modern-danger d-flex align-items-center"><i className="bi bi-exclamation-circle me-2"></i>{error}</div>}
-
             <div className="d-flex align-items-center gap-3 p-3 mb-4 rounded-3" style={{ background: 'var(--surface-2)', border: '1px solid var(--border)' }}>
               <div className="provider-avatar">{provider.name.charAt(0)}</div>
               <div className="flex-grow-1">
@@ -81,7 +85,6 @@ export default function Booking() {
                 <small className="text-muted">total</small>
               </div>
             </div>
-
             <form onSubmit={handleSubmit}>
               <div className="row">
                 <div className="col-md-6 mb-3">
@@ -95,7 +98,6 @@ export default function Booking() {
                     onChange={e => setForm({ ...form, time: e.target.value })} required />
                 </div>
               </div>
-
               <div className="mb-3">
                 <div className="d-flex align-items-center gap-2 mb-2">
                   <label className="form-label fw-semibold mb-0"><i className="bi bi-stars me-1" style={{ color: 'var(--primary)' }}></i>AI Time Suggestions</label>
@@ -107,18 +109,14 @@ export default function Booking() {
                 {aiSlots && (
                   <div className="p-3 rounded-3" style={{ background: 'var(--surface-2)', border: '1px solid var(--border)' }}>
                     {aiSlots.slots.length === 0 ? (
-                      <div className="text-muted small mb-0">
-                        <i className="bi bi-exclamation-circle me-1"></i>{aiSlots.recommendation}
-                      </div>
+                      <div className="text-muted small mb-0"><i className="bi bi-exclamation-circle me-1"></i>{aiSlots.recommendation}</div>
                     ) : (
                       <>
                         <div className="d-flex flex-wrap gap-2 mb-2">
                           {aiSlots.slots.map(s => (
                             <button key={s} type="button"
                               className={`btn btn-sm ${form.time === s ? 'btn-modern btn-modern-primary' : 'btn-modern btn-modern-outline'}`}
-                              onClick={() => setForm(f => ({ ...f, time: s }))}>
-                              {s}
-                            </button>
+                              onClick={() => setForm(f => ({ ...f, time: s }))}>{s}</button>
                           ))}
                         </div>
                         <small className="text-muted">{aiSlots.recommendation} {aiSlots.totalBookings > 0 && `(${aiSlots.totalBookings} booking(s) that day)`}</small>
@@ -129,18 +127,15 @@ export default function Booking() {
               </div>
               <div className="mb-3">
                 <label className="form-label fw-semibold">Address</label>
-                <input type="text" className="form-control form-modern" placeholder="Your address"
-                  value={form.address} onChange={e => setForm({ ...form, address: e.target.value })} required />
+                <input type="text" className="form-control form-modern" placeholder="Your address" value={form.address} onChange={e => setForm({ ...form, address: e.target.value })} required />
               </div>
               <div className="mb-3">
                 <label className="form-label fw-semibold">Description</label>
-                <textarea className="form-control form-modern" rows="2" placeholder="Describe the job..."
-                  value={form.description} onChange={e => setForm({ ...form, description: e.target.value })}></textarea>
+                <textarea className="form-control form-modern" rows="2" placeholder="Describe the job..." value={form.description} onChange={e => setForm({ ...form, description: e.target.value })}></textarea>
               </div>
               <div className="mb-3">
                 <label className="form-label fw-semibold">Estimated Hours</label>
-                <input type="number" className="form-control form-modern" min="0.5" step="0.5"
-                  value={form.hours} onChange={e => setForm({ ...form, hours: Number(e.target.value) })} required />
+                <input type="number" className="form-control form-modern" min="0.5" step="0.5" value={form.hours} onChange={e => setForm({ ...form, hours: Number(e.target.value) })} required />
               </div>
               <div className="p-3 rounded-3 mb-3 text-center" style={{ background: 'rgba(var(--primary-rgb), 0.15)', border: '1px solid var(--primary)' }}>
                 <h4 className="fw-bold mb-0" style={{ color: 'var(--primary)' }}>Total: ${(provider.pricePerHour * form.hours).toFixed(2)}</h4>

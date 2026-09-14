@@ -46,97 +46,104 @@ export default function Invoice() {
   return (
     <div className="row justify-content-center animate-fade-in">
       <div className="col-md-7" id="invoice-content">
-        <div className="auth-card p-4 mb-4">
-          <div className="d-flex justify-content-between align-items-center mb-4 no-print">
-            <div>
-              <h3 className="fw-bold mb-1">
-                <i className="bi bi-receipt me-2" style={{ color: 'var(--primary)' }}></i>
-                Invoice
-              </h3>
-              <small className="text-muted">#{booking._id?.slice(-8).toUpperCase()}</small>
+        <div className="card-modern" style={{ borderRadius: 'var(--radius-md)', overflow: 'hidden' }}>
+          <div style={{
+            background: 'linear-gradient(135deg, #132234 0%, rgba(38,198,201,0.2) 50%, #0d2a3a 100%)',
+            padding: '1.2rem 1.5rem', borderBottom: '1px solid var(--border)',
+            display: 'flex', alignItems: 'center', justifyContent: 'space-between',
+          }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '0.6rem' }}>
+              <div style={{
+                width: 36, height: 36, borderRadius: 8,
+                background: 'linear-gradient(135deg, #26c6c9, #1a9fa2)',
+                display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0,
+              }}>
+                <i className="bi bi-receipt text-white"></i>
+              </div>
+              <div>
+                <h5 className="fw-bold mb-0">Invoice</h5>
+                <small className="text-muted">#{booking._id?.slice(-8).toUpperCase()}</small>
+              </div>
             </div>
-            <button className="btn btn-modern btn-modern-outline" onClick={handlePrint}>
+            <button className="btn btn-sm btn-modern btn-modern-outline no-print" onClick={handlePrint}>
               <i className="bi bi-printer me-1"></i>Print
             </button>
           </div>
 
-          <div className="d-none d-print-block mb-4">
-            <h3 className="fw-bold mb-1">
-              <i className="bi bi-receipt me-2"></i>
-              Invoice
-            </h3>
+          <div className="d-none d-print-block p-4">
+            <h3 className="fw-bold mb-1"><i className="bi bi-receipt me-2"></i>Invoice</h3>
             <small className="text-muted">#{booking._id?.slice(-8).toUpperCase()}</small>
           </div>
 
-          <div className="mb-4">
-            <h6 className="fw-bold mb-3">Booking Status</h6>
-            <div className="d-flex justify-content-between position-relative">
-              {statusSteps.map((s, i) => (
-                <div key={s.value} className="text-center" style={{ flex: 1 }}>
-                  <div style={{
-                    width: 40, height: 40, borderRadius: '50%',
-                    background: i <= currentStep ? 'var(--primary)' : 'var(--surface-2)',
-                    color: i <= currentStep ? 'var(--text-white)' : 'var(--text-muted)',
-                    display: 'flex', alignItems: 'center', justifyContent: 'center',
-                    margin: '0 auto 6px', fontSize: 16,
-                  }}>
-                    <i className={`bi ${s.icon}`}></i>
+          <div className="card-body p-4">
+            <div className="mb-4">
+              <h6 className="fw-bold mb-3">Booking Status</h6>
+              <div className="d-flex justify-content-between position-relative">
+                {statusSteps.map((s, i) => (
+                  <div key={s.value} className="text-center" style={{ flex: 1 }}>
+                    <div style={{
+                      width: 40, height: 40, borderRadius: '50%',
+                      background: i <= currentStep ? 'var(--primary)' : 'var(--surface-2)',
+                      color: i <= currentStep ? 'white' : 'var(--text-muted)',
+                      display: 'flex', alignItems: 'center', justifyContent: 'center',
+                      margin: '0 auto 6px', fontSize: 16,
+                    }}>
+                      <i className={`bi ${s.icon}`}></i>
+                    </div>
+                    <small className="d-block" style={{ fontSize: 11, color: i <= currentStep ? 'var(--primary)' : 'var(--text-muted)', fontWeight: i <= currentStep ? 600 : 400 }}>
+                      {s.label}
+                    </small>
                   </div>
-                  <small className="d-block" style={{ fontSize: 11, color: i <= currentStep ? 'var(--primary)' : 'var(--text-muted)', fontWeight: i <= currentStep ? 600 : 400 }}>
-                    {s.label}
-                  </small>
+                ))}
+              </div>
+            </div>
+
+            <div className="p-3 mb-3 rounded-3" style={{ background: 'var(--surface-2)', border: '1px solid var(--border)' }}>
+              <div className="row">
+                <div className="col-6 mb-2">
+                  <small className="text-muted d-block">Provider</small>
+                  <span className="fw-semibold">{booking.provider?.name}</span>
                 </div>
-              ))}
-            </div>
-          </div>
-
-          <div className="p-3 mb-3 rounded-3" style={{ background: 'var(--surface-2)', border: '1px solid var(--border)' }}>
-            <div className="row">
-              <div className="col-6 mb-2">
-                <small className="text-muted d-block">Provider</small>
-                <span className="fw-semibold">{booking.provider?.name}</span>
-              </div>
-              <div className="col-6 mb-2">
-                <small className="text-muted d-block">Service Date</small>
-                <span className="fw-semibold">{new Date(booking.date).toLocaleDateString()} at {booking.time}</span>
-              </div>
-              <div className="col-6 mb-2">
-                <small className="text-muted d-block">Address</small>
-                <span className="fw-semibold">{booking.address}</span>
-              </div>
-              <div className="col-6 mb-2">
-                <small className="text-muted d-block">Hours</small>
-                <span className="fw-semibold">{booking.hours} hr(s)</span>
-              </div>
-              {report?.description && (
-                <div className="col-12 mt-2">
-                  <small className="text-muted d-block">User Complaint</small>
-                  <span className="fw-semibold" style={{ color: 'var(--danger)' }}>{report.description}</span>
+                <div className="col-6 mb-2">
+                  <small className="text-muted d-block">Service Date</small>
+                  <span className="fw-semibold">{new Date(booking.date).toLocaleDateString()} at {booking.time}</span>
                 </div>
-              )}
+                <div className="col-6 mb-2">
+                  <small className="text-muted d-block">Address</small>
+                  <span className="fw-semibold">{booking.address}</span>
+                </div>
+                <div className="col-6 mb-2">
+                  <small className="text-muted d-block">Hours</small>
+                  <span className="fw-semibold">{booking.hours} hr(s)</span>
+                </div>
+                {report?.description && (
+                  <div className="col-12 mt-2">
+                    <small className="text-muted d-block">User Complaint</small>
+                    <span className="fw-semibold" style={{ color: 'var(--danger)' }}>{report.description}</span>
+                  </div>
+                )}
+              </div>
             </div>
-          </div>
 
-          <div className="p-3 rounded-3 mb-3" style={{ background: 'var(--surface-2)' }}>
-            <div className="d-flex justify-content-between mb-1">
-              <span>Service Fee ({booking.hours} hrs × ${booking.provider?.pricePerHour}/hr)</span>
-              <span>${booking.totalAmount?.toFixed(2)}</span>
+            <div className="p-3 rounded-3 mb-3" style={{ background: 'var(--surface-2)' }}>
+              <div className="d-flex justify-content-between mb-1">
+                <span>Service Fee ({booking.hours} hrs × ${booking.provider?.pricePerHour}/hr)</span>
+                <span>${booking.totalAmount?.toFixed(2)}</span>
+              </div>
+              <hr />
+              <div className="d-flex justify-content-between fw-bold" style={{ color: 'var(--primary)', fontSize: 18 }}>
+                <span>Total</span>
+                <span>${booking.totalAmount?.toFixed(2)}</span>
+              </div>
             </div>
-            <hr />
-            <div className="d-flex justify-content-between fw-bold" style={{ color: 'var(--primary)', fontSize: 18 }}>
-              <span>Total</span>
-              <span>${booking.totalAmount?.toFixed(2)}</span>
-            </div>
-          </div>
 
-          <div className="d-flex justify-content-between p-2 rounded-3" style={{ background: 'var(--surface-2)' }}>
-            <span className="text-muted">Payment</span>
-            <span className="fw-semibold">
-              {getPaymentDisplay()}
-            </span>
+            <div className="d-flex justify-content-between p-2 rounded-3" style={{ background: 'var(--surface-2)' }}>
+              <span className="text-muted">Payment</span>
+              <span className="fw-semibold">{getPaymentDisplay()}</span>
+            </div>
           </div>
         </div>
-        <button className="btn btn-modern btn-modern-outline w-100 no-print" onClick={() => navigate('/my-bookings')}>
+        <button className="btn btn-modern btn-modern-outline w-100 mt-3 no-print" onClick={() => navigate('/my-bookings')}>
           <i className="bi bi-arrow-left me-1"></i>Back to Bookings
         </button>
       </div>

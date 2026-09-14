@@ -40,14 +40,24 @@ export default function AiTools() {
 
   return (
     <div className="animate-fade-in">
-      <div className="auth-card mb-4">
-        <div className="auth-header d-flex align-items-center gap-3" style={{textAlign: 'left'}}>
-          <div style={{position: 'relative', zIndex: 1}}>
-            <i className="bi bi-stars" style={{fontSize: '2rem'}}></i>
+      <div className="card-modern mb-4" style={{ borderRadius: 'var(--radius-md)', overflow: 'hidden' }}>
+        <div style={{
+          background: 'linear-gradient(135deg, #132234 0%, rgba(38,198,201,0.2) 50%, #0d2a3a 100%)',
+          padding: '1.5rem 1.75rem', borderBottom: '1px solid var(--border)',
+          display: 'flex', alignItems: 'center', gap: '0.75rem',
+          position: 'relative', overflow: 'hidden',
+        }}>
+          <div style={{
+            width: 42, height: 42, borderRadius: 10,
+            background: 'linear-gradient(135deg, #26c6c9, #1a9fa2)',
+            display: 'flex', alignItems: 'center', justifyContent: 'center',
+            flexShrink: 0, position: 'relative', zIndex: 1,
+          }}>
+            <i className="bi bi-stars text-white" style={{ fontSize: '1.1rem' }}></i>
           </div>
-          <div style={{position: 'relative', zIndex: 1}}>
-            <h3 className="fw-bold mb-0">AI Service Assistant</h3>
-            <p className="mb-0 opacity-75 small">Describe your job — get a smart price estimate and matched providers</p>
+          <div style={{ position: 'relative', zIndex: 1 }}>
+            <h4 className="fw-bold mb-0">AI Service Assistant</h4>
+            <small style={{ color: 'var(--text-secondary)' }}>Describe your job — get a smart price estimate and matched providers</small>
           </div>
         </div>
         <div className="card-body p-4">
@@ -80,11 +90,18 @@ export default function AiTools() {
       </div>
 
       {estimate && (
-        <div className="row g-4 mb-4">
+        <div className="row g-4 mb-4 align-items-stretch">
           <div className="col-md-4 animate-fade-in-up">
-            <div className="auth-card h-100">
+            <div className="card-modern h-100" style={{ borderRadius: 'var(--radius-md)', overflow: 'hidden' }}>
+              <div style={{
+                background: 'linear-gradient(135deg, #132234 0%, rgba(38,198,201,0.15) 50%, #0d2a3a 100%)',
+                padding: '1rem 1.5rem', borderBottom: '1px solid var(--border)',
+                display: 'flex', alignItems: 'center', gap: '0.5rem',
+              }}>
+                <i className="bi bi-cash-coin" style={{ color: 'var(--primary)' }}></i>
+                <h6 className="fw-bold mb-0">Smart Price Estimate</h6>
+              </div>
               <div className="card-body p-4">
-                <h6 className="fw-bold mb-3"><i className="bi bi-cash-coin me-2" style={{ color: 'var(--primary)' }}></i>Smart Price Estimate</h6>
                 <div className="mb-3">
                   <small className="text-muted d-block mb-1">Service Type</small>
                   <span className="badge badge-modern-primary">{estimate.serviceType}</span>
@@ -110,9 +127,16 @@ export default function AiTools() {
             </div>
           </div>
           <div className="col-md-8 animate-fade-in-up" style={{ animationDelay: '0.1s' }}>
-            <div className="auth-card h-100">
+            <div className="card-modern h-100" style={{ borderRadius: 'var(--radius-md)', overflow: 'hidden' }}>
+              <div style={{
+                background: 'linear-gradient(135deg, #132234 0%, rgba(38,198,201,0.15) 50%, #0d2a3a 100%)',
+                padding: '1rem 1.5rem', borderBottom: '1px solid var(--border)',
+                display: 'flex', alignItems: 'center', gap: '0.5rem',
+              }}>
+                <i className="bi bi-person-check" style={{ color: 'var(--primary)' }}></i>
+                <h6 className="fw-bold mb-0">Smart Provider Matches</h6>
+              </div>
               <div className="card-body p-4">
-                <h6 className="fw-bold mb-3"><i className="bi bi-person-check me-2" style={{ color: 'var(--primary)' }}></i>Smart Provider Matches</h6>
                 {matches?.length === 0 ? (
                   <p className="text-muted mb-0">No providers available.</p>
                 ) : (
