@@ -1,5 +1,5 @@
-import React from 'react';
-import { Routes, Route, useLocation } from 'react-router-dom';
+import React, { useEffect } from 'react';
+import { Routes, Route, useLocation, useNavigate } from 'react-router-dom';
 import { ThemeProvider } from './context/ThemeContext';
 import { useAuth } from './context/AuthContext';
 import Navbar from './components/Navbar';
@@ -25,6 +25,25 @@ import Favorites from './pages/Favorites';
 import Admin from './pages/Admin';
 import AiTools from './pages/AiTools';
 import InstallBanner from './components/InstallBanner';
+
+function MobileRedirect({ children }) {
+  const { user, loading } = useAuth();
+  const location = useLocation();
+  const navigate = useNavigate();
+  const isNativeApp = window.location.protocol === 'capacitor:' || window.location.hostname === 'localhost';
+
+  useEffect(() => {
+    if (isNativeApp && !loading && !user && location.pathname !== '/login' && location.pathname !== '/register') {
+      navigate('/login', { replace: true });
+    }
+  }, [user, loading, location.pathname, navigate, isNativeApp]);
+
+  if (isNativeApp && !loading && !user && location.pathname !== '/login' && location.pathname !== '/register') {
+    return null;
+  }
+
+  return children;
+}
 
 function AppContent() {
   const { user } = useAuth();
@@ -68,13 +87,19 @@ function AppContent() {
 
 function App() {
   const { sessionExpired } = useAuth();
+  const location = useLocation();
+  const isNativeApp = window.location.protocol === 'capacitor:' || window.location.hostname === 'localhost';
+  const isAuthPage = location.pathname === '/login' || location.pathname === '/register';
+
   return (
     <ThemeProvider>
       <SessionExpiredModal show={sessionExpired} />
-      <Navbar />
-      <AppContent />
-      <ChatBot />
-      <InstallBanner />
+      {!isNativeApp && <Navbar />}
+      <MobileRedirect>
+        <AppContent />
+      </MobileRedirect>
+      {!isNativeApp && <ChatBot />}
+      {!isNativeApp && <InstallBanner />}
     </ThemeProvider>
   );
 }
