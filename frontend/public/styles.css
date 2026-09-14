@@ -1038,7 +1038,7 @@ a:hover { color: var(--primary-dark); }
    ============================================ */
 .app-layout { display: flex; gap: 1.5rem; min-height: calc(100vh - 88px); }
 .app-sidebar {
-  width: 230px; flex-shrink: 0;
+  width: 250px; flex-shrink: 0;
   background: var(--surface);
   border: 1px solid var(--border);
   border-radius: var(--radius-md);
@@ -1047,10 +1047,14 @@ a:hover { color: var(--primary-dark); }
   align-self: flex-start;
   position: sticky; top: 88px;
   overflow: hidden;
+  transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 [data-theme="dark"] .app-sidebar {
-  background: linear-gradient(180deg, var(--surface) 0%, #0d2535 100%);
+  background: linear-gradient(180deg, #0d2a3a 0%, #0b1e2e 40%, #0f3545 80%, #0b2233 100%);
   border-color: var(--border);
+}
+.app-sidebar.sidebar-collapsed {
+  width: 72px;
 }
 .sidebar-user {
   padding: 1.25rem;
