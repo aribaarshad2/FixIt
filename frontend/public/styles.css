@@ -1202,7 +1202,11 @@ a:hover { color: var(--primary-dark); }
   background: linear-gradient(135deg, #132234 0%, rgba(38,198,201,0.2) 50%, #0d2a3a 100%);
 }
 [data-theme="light"] .page-header {
-  background: linear-gradient(135deg, #e0f7fa 0%, rgba(0,150,136,0.15) 50%, #e0f2f1 100%);
+  background: linear-gradient(135deg, #5a9a9a 0%, #7ababa 35%, #a0d8d4 65%, #c8ece8 100%);
+  color: white;
+}
+[data-theme="light"] .page-header small {
+  color: rgba(255,255,255,0.85);
 }
 [data-theme="light"] .page-header .section-icon {
   background: var(--gradient-1);
