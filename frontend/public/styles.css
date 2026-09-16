@@ -1203,11 +1203,11 @@ a:hover { color: var(--primary-dark); }
   color: white;
 }
 [data-theme="light"] .page-header {
-  background: linear-gradient(180deg, #0d2a3a 0%, #0b1e2e 40%, #0f3545 80%, #0b2233 100%);
+  background: linear-gradient(180deg, #1a4a5a 0%, #1e5565 40%, #2a6a7a 80%, #1a5060 100%);
   color: white;
 }
 [data-theme="light"] .page-header small {
-  color: rgba(255,255,255,0.85);
+  color: rgba(255,255,255,0.8);
 }
 [data-theme="light"] .page-header .section-icon {
   background: rgba(255,255,255,0.2);
@@ -1240,10 +1240,11 @@ a:hover { color: var(--primary-dark); }
   height: 30px;
   background: #0b1e2e;
   clip-path: ellipse(60% 100% at 100% 100%);
-  opacity: 0.3;
+  opacity: 0.2;
 }
-[data-theme="dark"] .page-header::after {
-  background: #0b1e2e;
+[data-theme="light"] .page-header::after {
+  background: #1a4a5a;
+  opacity: 0.15;
 }
 .page-header small {
   color: var(--text-secondary);
