@@ -1199,18 +1199,13 @@ a:hover { color: var(--primary-dark); }
   overflow: hidden;
 }
 [data-theme="dark"] .page-header {
-  background: linear-gradient(180deg, #0d2a3a 0%, #0b1e2e 40%, #0f3545 80%, #0b2233 100%);
-  color: white;
+  background: linear-gradient(135deg, #132234 0%, rgba(38,198,201,0.2) 50%, #0d2a3a 100%);
 }
 [data-theme="light"] .page-header {
-  background: linear-gradient(180deg, #1a4a5a 0%, #1e5565 40%, #2a6a7a 80%, #1a5060 100%);
-  color: white;
-}
-[data-theme="light"] .page-header small {
-  color: rgba(255,255,255,0.8);
+  background: linear-gradient(135deg, #e0f7fa 0%, rgba(0,150,136,0.15) 50%, #e0f2f1 100%);
 }
 [data-theme="light"] .page-header .section-icon {
-  background: rgba(255,255,255,0.2);
+  background: var(--gradient-1);
   color: white;
 }
 .page-header-icon {
@@ -1238,12 +1233,8 @@ a:hover { color: var(--primary-dark); }
   left: 0;
   right: 0;
   height: 30px;
-  background: #0b1e2e;
+  background: var(--surface);
   clip-path: ellipse(60% 100% at 100% 100%);
-  opacity: 0.2;
-}
-[data-theme="light"] .page-header::after {
-  background: #1a4a5a;
   opacity: 0.15;
 }
 .page-header small {
