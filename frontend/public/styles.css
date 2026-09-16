@@ -1199,17 +1199,18 @@ a:hover { color: var(--primary-dark); }
   overflow: hidden;
 }
 [data-theme="dark"] .page-header {
-  background: linear-gradient(135deg, #132234 0%, rgba(38,198,201,0.2) 50%, #0d2a3a 100%);
+  background: linear-gradient(180deg, #0d2a3a 0%, #0b1e2e 40%, #0f3545 80%, #0b2233 100%);
+  color: white;
 }
 [data-theme="light"] .page-header {
-  background: linear-gradient(135deg, #2a8a8a 0%, #3ca8a0 30%, #6bc5bf 60%, #a0ddd8 100%);
+  background: linear-gradient(180deg, #0d2a3a 0%, #0b1e2e 40%, #0f3545 80%, #0b2233 100%);
   color: white;
 }
 [data-theme="light"] .page-header small {
   color: rgba(255,255,255,0.85);
 }
 [data-theme="light"] .page-header .section-icon {
-  background: rgba(255,255,255,0.25);
+  background: rgba(255,255,255,0.2);
   color: white;
 }
 .page-header-icon {
@@ -1237,12 +1238,12 @@ a:hover { color: var(--primary-dark); }
   left: 0;
   right: 0;
   height: 30px;
-  background: var(--surface);
+  background: #0b1e2e;
   clip-path: ellipse(60% 100% at 100% 100%);
-  opacity: 0.15;
+  opacity: 0.3;
 }
 [data-theme="dark"] .page-header::after {
-  background: #132234;
+  background: #0b1e2e;
 }
 .page-header small {
   color: var(--text-secondary);
