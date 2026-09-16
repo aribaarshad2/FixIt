@@ -1202,7 +1202,15 @@ a:hover { color: var(--primary-dark); }
   background: linear-gradient(135deg, #132234 0%, rgba(38,198,201,0.2) 50%, #0d2a3a 100%);
 }
 [data-theme="light"] .page-header {
-  background: linear-gradient(135deg, #e0f7fa 0%, rgba(0,150,136,0.15) 50%, #e0f2f1 100%);
+  background: linear-gradient(135deg, #2a8a8a 0%, #3ca8a0 30%, #6bc5bf 60%, #a0ddd8 100%);
+  color: white;
+}
+[data-theme="light"] .page-header small {
+  color: rgba(255,255,255,0.85);
+}
+[data-theme="light"] .page-header .section-icon {
+  background: rgba(255,255,255,0.25);
+  color: white;
 }
 .page-header-icon {
   width: 42px; height: 42px;
@@ -1215,6 +1223,26 @@ a:hover { color: var(--primary-dark); }
 }
 .page-header h4, .page-header h5, .page-header h6 {
   margin-bottom: 0;
+}
+.page-header small {
+  color: var(--text-secondary);
+}
+[data-theme="light"] .page-header small {
+  color: rgba(255,255,255,0.85);
+}
+.page-header::after {
+  content: '';
+  position: absolute;
+  bottom: -1px;
+  left: 0;
+  right: 0;
+  height: 30px;
+  background: var(--surface);
+  clip-path: ellipse(60% 100% at 100% 100%);
+  opacity: 0.15;
+}
+[data-theme="dark"] .page-header::after {
+  background: #132234;
 }
 .page-header small {
   color: var(--text-secondary);
