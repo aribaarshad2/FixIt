@@ -1204,9 +1204,17 @@ a:hover { color: var(--primary-dark); }
 [data-theme="light"] .page-header {
   background: linear-gradient(135deg, #5a9a9a 0%, #7ababa 35%, #a0d8d4 65%, #c8ece8 100%);
   color: white;
+  border-color: rgba(255,255,255,0.2);
+}
+[data-theme="light"] .page-header h4,
+[data-theme="light"] .page-header h5,
+[data-theme="light"] .page-header h6,
+[data-theme="light"] .page-header small,
+[data-theme="light"] .page-header p {
+  color: white !important;
 }
 [data-theme="light"] .page-header small {
-  color: rgba(255,255,255,0.85);
+  opacity: 0.85;
 }
 [data-theme="light"] .page-header .section-icon {
   background: var(--gradient-1);
@@ -1227,9 +1235,6 @@ a:hover { color: var(--primary-dark); }
 .page-header small {
   color: var(--text-secondary);
 }
-[data-theme="light"] .page-header small {
-  color: rgba(255,255,255,0.85);
-}
 .page-header::after {
   content: '';
   position: absolute;
@@ -1240,9 +1245,6 @@ a:hover { color: var(--primary-dark); }
   background: var(--surface);
   clip-path: ellipse(60% 100% at 100% 100%);
   opacity: 0.15;
-}
-.page-header small {
-  color: var(--text-secondary);
 }
 .card-header-gradient {
   background: linear-gradient(135deg, var(--surface) 0%, rgba(var(--primary-rgb), 0.2) 50%, rgba(var(--primary-rgb), 0.08) 100%);
