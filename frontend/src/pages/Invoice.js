@@ -47,11 +47,7 @@ export default function Invoice() {
     <div className="row justify-content-center animate-fade-in">
       <div className="col-md-7" id="invoice-content">
         <div className="card-modern" style={{ borderRadius: 'var(--radius-md)', overflow: 'hidden' }}>
-          <div style={{
-            background: 'linear-gradient(135deg, #132234 0%, rgba(38,198,201,0.2) 50%, #0d2a3a 100%)',
-            padding: '1.2rem 1.5rem', borderBottom: '1px solid var(--border)',
-            display: 'flex', alignItems: 'center', justifyContent: 'space-between',
-          }}>
+          <div className="page-header">
             <div style={{ display: 'flex', alignItems: 'center', gap: '0.6rem' }}>
               <div style={{
                 width: 36, height: 36, borderRadius: 8,

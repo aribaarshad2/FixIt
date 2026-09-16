@@ -132,11 +132,7 @@ export default function ProviderDetail() {
       <div className="col-md-8">
         <div className="card-modern mb-4" style={{ borderRadius: 'var(--radius-md)', overflow: 'hidden' }}>
           {/* AI Summary Header */}
-          <div style={{
-            background: 'linear-gradient(135deg, #132234 0%, rgba(38,198,201,0.15) 50%, #0d2a3a 100%)',
-            padding: '1.2rem 1.5rem', borderBottom: '1px solid var(--border)',
-            display: 'flex', alignItems: 'center', gap: '0.6rem',
-          }}>
+          <div className="page-header">
             <i className="bi bi-stars" style={{ color: 'var(--primary)', fontSize: '1.1rem' }}></i>
             <h6 className="fw-bold mb-0">AI Summary</h6>
           </div>
@@ -153,11 +149,7 @@ export default function ProviderDetail() {
         </div>
         <div className="card-modern mb-4" style={{ borderRadius: 'var(--radius-md)', overflow: 'hidden' }}>
           {/* Reviews Header */}
-          <div style={{
-            background: 'linear-gradient(135deg, #132234 0%, rgba(38,198,201,0.15) 50%, #0d2a3a 100%)',
-            padding: '1.2rem 1.5rem', borderBottom: '1px solid var(--border)',
-            display: 'flex', alignItems: 'center', gap: '0.6rem',
-          }}>
+          <div className="page-header">
             <i className="bi bi-star" style={{ color: 'var(--primary)', fontSize: '1.1rem' }}></i>
             <h6 className="fw-bold mb-0">Reviews ({reviews.length})</h6>
           </div>

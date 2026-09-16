@@ -54,11 +54,7 @@ export default function Booking() {
     <div className="row justify-content-center mt-4 animate-fade-in-up">
       <div className="col-lg-6">
         <div className="card-modern" style={{ borderRadius: 'var(--radius-md)', overflow: 'hidden' }}>
-          <div style={{
-            background: 'linear-gradient(135deg, #132234 0%, rgba(38,198,201,0.2) 50%, #0d2a3a 100%)',
-            padding: '1.5rem 1.75rem', borderBottom: '1px solid var(--border)',
-            display: 'flex', alignItems: 'center', gap: '0.75rem',
-          }}>
+          <div className="page-header">
             <div style={{
               width: 42, height: 42, borderRadius: 10,
               background: 'linear-gradient(135deg, #26c6c9, #1a9fa2)',

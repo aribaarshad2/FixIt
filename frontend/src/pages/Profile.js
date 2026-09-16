@@ -109,13 +109,7 @@ export default function Profile() {
         <div className="col-md-8">
           <div className="card-modern h-100" style={{ borderRadius: 'var(--radius-md)', overflow: 'hidden' }}>
             {/* Header */}
-            <div style={{
-              background: 'linear-gradient(135deg, #132234 0%, rgba(38,198,201,0.2) 50%, #0d2a3a 100%)',
-              padding: '1.5rem 1.75rem',
-              borderBottom: '1px solid var(--border)',
-              display: 'flex', alignItems: 'center', gap: '0.75rem',
-              position: 'relative', overflow: 'hidden',
-            }}>
+            <div className="page-header">
               <div style={{
                 width: 42, height: 42, borderRadius: 10,
                 background: 'linear-gradient(135deg, #26c6c9, #1a9fa2)',

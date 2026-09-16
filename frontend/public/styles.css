@@ -1189,6 +1189,36 @@ a:hover { color: var(--primary-dark); }
 /* ============================================
    CARD HEADER GRADIENT — Teal overlay
    ============================================ */
+.page-header {
+  padding: 1.5rem 1.75rem;
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  position: relative;
+  overflow: hidden;
+}
+[data-theme="dark"] .page-header {
+  background: linear-gradient(135deg, #132234 0%, rgba(38,198,201,0.2) 50%, #0d2a3a 100%);
+}
+[data-theme="light"] .page-header {
+  background: linear-gradient(135deg, #e0f2f2 0%, rgba(0,112,112,0.12) 50%, #edf5f5 100%);
+}
+.page-header-icon {
+  width: 42px; height: 42px;
+  border-radius: 10px;
+  background: var(--gradient-1);
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+  color: white;
+  font-size: 1.1rem;
+}
+.page-header h4, .page-header h5, .page-header h6 {
+  margin-bottom: 0;
+}
+.page-header small {
+  color: var(--text-secondary);
+}
 .card-header-gradient {
   background: linear-gradient(135deg, var(--surface) 0%, rgba(var(--primary-rgb), 0.2) 50%, rgba(var(--primary-rgb), 0.08) 100%);
   border-bottom: 1px solid var(--border);
